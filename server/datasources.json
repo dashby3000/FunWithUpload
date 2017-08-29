@@ -1,0 +1,17 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage",
+    "allowedContentTypes": [
+      "image/png",
+      "image/jpeg",
+      "image/jpg"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "loopback-component-explorer": {
+    "mountPath": "/explorer",
+    "uiDirs": "server/explorer",
+    "apiInfo": {
+      "title": "{'welcome': 'FunWithUpload APIs', 'node_env': 'production'}",
+      "description": "LoopBack APIs"
+    }
+  }
+}

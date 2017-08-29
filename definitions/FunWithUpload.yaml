@@ -1,0 +1,166 @@
+paths:
+  /Uploads:
+    get:
+      tags:
+        - Upload
+      operationId: Upload.getContainers
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/x-any'
+      deprecated: false
+    post:
+      tags:
+        - Upload
+      operationId: Upload.createContainer
+      parameters:
+        - name: options
+          in: body
+          required: false
+          schema:
+            type: object
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/Uploads/{container}':
+    get:
+      tags:
+        - Upload
+      operationId: Upload.getContainer
+      parameters:
+        - name: container
+          in: path
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/Uploads/{container}/files':
+    get:
+      tags:
+        - Upload
+      operationId: Upload.getFiles
+      parameters:
+        - name: container
+          in: path
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/x-any'
+      deprecated: false
+  '/Uploads/{container}/files/{file}':
+    get:
+      tags:
+        - Upload
+      operationId: Upload.getFile
+      parameters:
+        - name: container
+          in: path
+          required: false
+          type: string
+        - name: file
+          in: path
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/Uploads/{container}/upload':
+    post:
+      tags:
+        - Upload
+      operationId: Upload.upload
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+      deprecated: false
+  '/Uploads/{container}/download/{file}':
+    get:
+      tags:
+        - Upload
+      operationId: Upload.download
+      parameters:
+        - name: container
+          in: path
+          required: false
+          type: string
+        - name: file
+          in: path
+          required: false
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+definitions:
+  x-any:
+    properties: {}
+basePath: /api
+swagger: '2.0'
+info:
+  x-ibm-name: funwithupload
+  version: 1.0.0
+  title: FunWithUpload
+  contact:
+    name: Dennis W. Ashby
+    email: dennis.ashby@us.ibm.com
+    url: 'https://www.linkedin.com/in/DennisAshby/'
+schemes:
+  - https
+host: $(catalog.host)
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)

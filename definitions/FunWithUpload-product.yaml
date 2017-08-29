@@ -1,0 +1,25 @@
+product: 1.0.0
+info:
+  name: funwithupload
+  title: FunWithUpload
+  version: 1.0.0
+  contact:
+    name: Dennis W. Ashby
+    email: dennis.ashby@us.ibm.com
+    url: 'https://www.linkedin.com/in/DennisAshby/'
+apis:
+  funwithupload:
+    $ref: FunWithUpload.yaml
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+plans:
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      value: 100/hour
+      hard-limit: false
