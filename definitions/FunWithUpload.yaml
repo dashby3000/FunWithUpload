@@ -125,10 +125,6 @@ info:
   x-ibm-name: funwithupload
   version: 1.0.0
   title: FunWithUpload
-  contact:
-    name: Dennis W. Ashby
-    email: dennis.ashby@us.ibm.com
-    url: 'https://www.linkedin.com/in/DennisAshby/'
 schemes:
   - https
 host: $(catalog.host)
